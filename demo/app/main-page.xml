@@ -4,6 +4,17 @@
   <StackLayout class="p-20">
     <Label text="compliance CC control"
       class="t-20 text-center footnote" textWrap="true"/>
-    <ui:StripeSdk />
+    <!-- predefined/binded values -->
+    <ui:StripePaymentCardTextField
+      class="m-10"
+      expDate="{{ date }}"
+      number="4242424242424242"
+      cvc="232"
+      paymentCardTextFieldDidChange="{{ callbackFn }}"/>
+
+    <ui:StripePaymentCardTextField
+      class="m-10"
+      paymentCardTextFieldDidChange="{{ callbackFn }}"/>
+
   </StackLayout>
 </Page>

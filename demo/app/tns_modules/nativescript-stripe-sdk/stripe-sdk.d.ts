@@ -1,7 +1,1 @@
-import { StripeSdkBase } from './stripe-sdk.common';
-export declare class StripeSdk extends StripeSdkBase {
-    nativeView: STPPaymentCardTextField;
-    createNativeView(): Object;
-    initNativeView(): void;
-    disposeNativeView(): void;
-}
+export { StripePaymentCardTextField } from './stripe-payment-card-text-field';

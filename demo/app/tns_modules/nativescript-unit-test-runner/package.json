@@ -1,48 +1,25 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "nativescript-unit-test-runner@^0.3.4",
-        "scope": null,
-        "escapedName": "nativescript-unit-test-runner",
-        "name": "nativescript-unit-test-runner",
-        "rawSpec": "^0.3.4",
-        "spec": ">=0.3.4 <0.4.0",
-        "type": "range"
-      },
-      "/Users/piotrilski/workspace/beachyapp/nativescript-stripe-sdk/demo"
-    ]
-  ],
-  "_from": "nativescript-unit-test-runner@>=0.3.4 <0.4.0",
+  "_from": "nativescript-unit-test-runner@^0.3.4",
   "_id": "nativescript-unit-test-runner@0.3.4",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "sha1-9t5SPUcyNlWcoOQgLRLVIXmNaBE=",
   "_location": "/nativescript-unit-test-runner",
-  "_nodeVersion": "6.7.0",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/nativescript-unit-test-runner-0.3.4.tgz_1478607256625_0.03711874270811677"
-  },
-  "_npmUser": {
-    "name": "vakrilov",
-    "email": "alexander.vakrilov@gmail.com"
-  },
-  "_npmVersion": "3.10.3",
   "_phantomChildren": {},
   "_requested": {
+    "type": "range",
+    "registry": true,
     "raw": "nativescript-unit-test-runner@^0.3.4",
-    "scope": null,
-    "escapedName": "nativescript-unit-test-runner",
     "name": "nativescript-unit-test-runner",
+    "escapedName": "nativescript-unit-test-runner",
     "rawSpec": "^0.3.4",
-    "spec": ">=0.3.4 <0.4.0",
-    "type": "range"
+    "saveSpec": null,
+    "fetchSpec": "^0.3.4"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/nativescript-unit-test-runner/-/nativescript-unit-test-runner-0.3.4.tgz",
   "_shasum": "f6de523d473236559ca0e4202d12d521798d6811",
-  "_shrinkwrap": null,
   "_spec": "nativescript-unit-test-runner@^0.3.4",
   "_where": "/Users/piotrilski/workspace/beachyapp/nativescript-stripe-sdk/demo",
   "author": {
@@ -52,7 +29,8 @@
   "bugs": {
     "url": "https://github.com/NativeScript/nativescript-unit-test-runner/issues"
   },
-  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "NativeScript unit test runner component.",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -62,52 +40,9 @@
     "grunt-ts": "^5.0.1",
     "typescript": "^1.8.2"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "f6de523d473236559ca0e4202d12d521798d6811",
-    "tarball": "https://registry.npmjs.org/nativescript-unit-test-runner/-/nativescript-unit-test-runner-0.3.4.tgz"
-  },
   "homepage": "https://github.com/NativeScript/nativescript-unit-test-runner#readme",
   "license": "Apache-2.0",
   "main": "app.js",
-  "maintainers": [
-    {
-      "name": "enchev",
-      "email": "vladimir.enchev@gmail.com"
-    },
-    {
-      "name": "erjangavalji",
-      "email": "erjan.gavalji@gmail.com"
-    },
-    {
-      "name": "hamorphis",
-      "email": "rossen.hristov@progress.com"
-    },
-    {
-      "name": "hdeshev",
-      "email": "hristo@deshev.com"
-    },
-    {
-      "name": "nsndeck",
-      "email": "nedyalko.nikolov@telerik.com"
-    },
-    {
-      "name": "rosen-vladimirov",
-      "email": "rosen.vladimirov.91@gmail.com"
-    },
-    {
-      "name": "tns-bot",
-      "email": "nativescript@telerik.com"
-    },
-    {
-      "name": "vakrilov",
-      "email": "alexander.vakrilov@gmail.com"
-    },
-    {
-      "name": "valio.stoychev",
-      "email": "valio.stoychev@gmail.com"
-    }
-  ],
   "name": "nativescript-unit-test-runner",
   "nativescript": {
     "platforms": {
@@ -115,8 +50,6 @@
       "ios": "1.6.0"
     }
   },
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NativeScript/nativescript-unit-test-runner.git"

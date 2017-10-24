@@ -1,11 +1,15 @@
 import { Observable } from 'tns-core-modules/data/observable';
 
 export class HelloWorldModel extends Observable {
-  public message: string;
+  public date: Date;
 
   constructor() {
     super();
 
-    this.message = 'Test';
+    this.date = new Date(2018, 9, 1);
+  }
+
+  public callbackFn(args: any) {
+    console.error('GOT IT!', args);
   }
 }
