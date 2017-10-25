@@ -1,20 +1,18 @@
 import { View, Property } from "tns-core-modules/ui/core/view";
+import { EventData } from "tns-core-modules/data/observable";
 import { StripePaymentEventData } from './stripe-payment-event-data';
 
 export class StripePaymentCardTextFieldBase extends View {
-
-  static paymentCardTextFieldDidChange: string = 'paymentCardTextFieldDidChange';
-  static paymentCardTextFieldDidEndEditing: string = 'paymentCardTextFieldDidEndEditing';
-  static paymentCardTextFieldDidEndEditingCVC: string = 'paymentCardTextFieldDidEndEditingCVC';
-  static paymentCardTextFieldDidEndEditingExpiration: string = 'paymentCardTextFieldDidEndEditingExpiration';
-  static paymentCardTextFieldDidEndEditingNumber: string = 'paymentCardTextFieldDidEndEditingNumber';
+  /**
+   * The name of the property is important it should be eventname+ Event
+   */
+  static paymentCardTextFieldDidChangeEvent: string = 'paymentCardTextFieldDidChange';
+  static paymentCardTextFieldDidEndEditingEvent: string = 'paymentCardTextFieldDidEndEditing';
+  static paymentCardTextFieldDidEndEditingCVCEvent: string = 'paymentCardTextFieldDidEndEditingCVC';
+  static paymentCardTextFieldDidEndEditingExpirationEvent: string = 'paymentCardTextFieldDidEndEditingExpiration';
+  static paymentCardTextFieldDidEndEditingNumberEvent: string = 'paymentCardTextFieldDidEndEditingNumber';
 
   static STPCardParamsProperties: string[] = ['number', 'cvc', 'expYear', 'expMonth'];
-
-
-  // notify(args: any) {
-  //   console.error(args.eventName);
-  // }
 
   makeNotification(
     eventName: string,
@@ -24,11 +22,11 @@ export class StripePaymentCardTextFieldBase extends View {
       /**
        * Lets not distinguish the type for the time being.
        */
-      // case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditing:
-      // case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingCVC:
-      // case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingExpiration:
-      // case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingNumber:
-      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidChange: {
+      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingEvent:
+      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingCVCEvent:
+      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingExpirationEvent:
+      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingNumberEvent:
+      case StripePaymentCardTextFieldBase.paymentCardTextFieldDidChangeEvent: {
         this.notify(<StripePaymentEventData>{
           eventName,
           object: this,

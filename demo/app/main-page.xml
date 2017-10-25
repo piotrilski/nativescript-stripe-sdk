@@ -2,15 +2,14 @@
   loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-stripe-sdk">
   <StackLayout class="p-20">
-    <Label text="compliance CC control"
+    <Label text="CC control"
       class="t-20 text-center footnote" textWrap="true"/>
     <!-- predefined/binded values -->
     <ui:StripePaymentCardTextField
       class="m-10"
       expDate="{{ date }}"
       number="4242424242424242"
-      cvc="232"
-      paymentCardTextFieldDidChange="{{ callbackFn }}"/>
+      cvc="232"/>
 
     <ui:StripePaymentCardTextField
       class="m-10"

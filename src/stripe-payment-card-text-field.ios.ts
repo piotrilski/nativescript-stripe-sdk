@@ -6,6 +6,25 @@ import {
 } from './stripe-payment-card-text-field.common';
 import { StripePaymentEventData } from './stripe-payment-event-data';
 
+import { EventData } from "tns-core-modules/data/observable";
+
+// class TapHandler extends NSObject {
+//   public paymentCardTextFieldDidChange(nativeButton: STPPaymentCardTextField, nativeEvent: _UIEvent) {
+//     const owner: StripePaymentCardTextField = (<any>nativeButton).owner;
+//     if (owner) {
+//       owner.notify({
+//         eventName: StripePaymentCardTextFieldBase.paymentCardTextFieldDidChange,
+//         object: owner,
+//       });
+//     }
+//   }
+//   public static ObjCExposedMethods = {
+//       "paymentCardTextFieldDidChange": { returns: interop.types.void, params: [interop.types.id, interop.types.id] }
+//   };
+// }
+
+// const handler = TapHandler.new();
+
 export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   private localDelegate: StripePaymentCardTextFieldDelegate;
 
@@ -41,7 +60,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
     eventName: string,
     ccTextField: STPPaymentCardTextField,
   ) {
-    this.makeNotification(eventName, ccTextField);
+   this.makeNotification(eventName, ccTextField);
   }
 
   /**
@@ -52,8 +71,6 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
       .alloc()
       .initWithFrame(CGRectMake(10, 10, 300, 44));
 
-    ccTextField.delegate = this.localDelegate;
-
     return ccTextField;
   }
 
@@ -63,6 +80,8 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
      * through this field.
      */
     (<any>this.nativeView).owner = this;
+    (<any>this.nativeView).delegate = this.localDelegate;
+
     super.initNativeView();
   }
 
@@ -71,6 +90,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
      *  Remove reference from native listener to this instance.
      */
     (<any>this.nativeView).owner = null;
+    (<any>this.nativeView).delegate = null;
 
     super.disposeNativeView();
   }
@@ -108,7 +128,6 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
     this.nativeView.cardParams = this
       .overrideSTPCardParams(this.nativeView.cardParams, map);
   }
-
 }
 
 class StripePaymentCardTextFieldDelegate extends NSObject
@@ -121,6 +140,7 @@ class StripePaymentCardTextFieldDelegate extends NSObject
   }
 
   private ccTextFieldCallback: (eventName: string, ccTextField: STPPaymentCardTextField) => void;
+
   private callHandler(
     eventName: string,
     textField: STPPaymentCardTextField,
@@ -138,35 +158,35 @@ class StripePaymentCardTextFieldDelegate extends NSObject
 
   paymentCardTextFieldDidChange?(textField: STPPaymentCardTextField): void {
     this.callHandler(
-      StripePaymentCardTextFieldBase.paymentCardTextFieldDidChange,
+      StripePaymentCardTextFieldBase.paymentCardTextFieldDidChangeEvent,
       textField,
     );
   }
 
   paymentCardTextFieldDidEndEditing?(textField: STPPaymentCardTextField): void {
     this.callHandler(
-      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditing,
+      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingEvent,
       textField,
     );
   }
 
   paymentCardTextFieldDidEndEditingCVC?(textField: STPPaymentCardTextField): void {
     this.callHandler(
-      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingCVC,
+      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingCVCEvent,
       textField,
     );
   }
 
   paymentCardTextFieldDidEndEditingExpiration?(textField: STPPaymentCardTextField): void {
     this.callHandler(
-      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingExpiration,
+      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingExpirationEvent,
       textField,
     );
   }
 
   paymentCardTextFieldDidEndEditingNumber?(textField: STPPaymentCardTextField): void {
     this.callHandler(
-      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingNumber,
+      StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingNumberEvent,
       textField,
     );
   }
