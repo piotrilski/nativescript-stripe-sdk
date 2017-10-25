@@ -22,48 +22,48 @@ tns plugin add nativescript-stripe-sdk
 ## Usage
 
 ### IMPORTANT: SDK API key needs to be set on app startup
-	```javascript
-    import { StripeSdk } from 'nativescript-stripe-sdk';
+```javascript
+import { StripeSdk } from 'nativescript-stripe-sdk';
 
-    application.on(application.launchEvent, () => {
-        if (platform.isIOS) {
-            StripeSdk.setApiKey('pk_test_u6EwgR7lHu8YKOqO5AOynNVj');
-        }
-    });
-    ```)
+application.on(application.launchEvent, () => {
+    if (platform.isIOS) {
+        StripeSdk.setApiKey('pk_test_u6EwgR7lHu8YKOqO5AOynNVj');
+    }
+});
+```
 
 ### Usage in UI
 
-    ```xml
-    <!-- predefined/binded values -->
-    <ui:StripePaymentCardTextField
-      expDate="{{ date }}"
-      number="{{ number }}"
-      cvc="{{ cvc }}"/>
+```xml
+<ui:StripePaymentCardTextField
+  expDate="{{ date }}"
+  number="{{ number }}"
+  cvc="{{ cvc }}"/>
+```
 
-    <!-- callback -->
-     <ui:StripePaymentCardTextField
-      paymentCardTextFieldDidChange="{{ callbackFn }}"/>
-    ```
+```xml
+ <ui:StripePaymentCardTextField
+  paymentCardTextFieldDidChange="{{ callbackFn }}"/>
+```
 
 ### Check if given CC is valid (card of STPCardParams type)
-    ```javascript
-    import { StripeSdk } from 'nativescript-stripe-sdk';
+```javascript
+import { StripeSdk } from 'nativescript-stripe-sdk';
 
-    const isValid = StripeSdk.validateCard(card);
-    ```
+const isValid = StripeSdk.validateCard(card);
+```
 
 ### Generate stripe token
 IMPORTANT: valid stripe API key needs to be set on app startup
 
-     ```javascript
-    import { StripeSdk } from 'nativescript-stripe-sdk';
+ ```javascript
+import { StripeSdk } from 'nativescript-stripe-sdk';
 
-    StripeSdk
-        .createToken(card.cardParams)
-        .then(token => { console.log(token); })
-        .catch(error => { console.error(error); });
-    ```
+StripeSdk
+    .createToken(card.cardParams)
+    .then(token => { console.log(token); })
+    .catch(error => { console.error(error); });
+```
 
 ## API
 
