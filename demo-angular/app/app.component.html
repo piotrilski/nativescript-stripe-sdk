@@ -1,7 +1,20 @@
-<GridLayout rows="44,44,*">
-  <StackLayout row="1">
+<GridLayout rows="44, auto, auto, *">
+  <StackLayout row="0">
     <StripePaymentCardTextField
+      class="m-10"
       (paymentCardTextFieldDidChange)="onPaymentCardTextFieldDidChange($event)">
     </StripePaymentCardTextField>
   </StackLayout>
+
+  <Label row="1"
+    class="footnote text-center"
+    text="Is valid: {{ isValid | async }}">
+  </Label>
+
+  <Label row="2"
+    [visibility]="(token | async) ? 'visible' : 'collapsed'"
+    class="footnote text-center"
+    text="Token: {{ token | async }}">
+  </Label>
+
 </GridLayout>

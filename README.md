@@ -19,7 +19,51 @@ Implemented for iOS only - this plugin uses 11.3 Stripe's SDK.
 tns plugin add nativescript-stripe-sdk
 ```
 
-## Usage
+## Usage in Android
+
+### Set API key
+Add this to the main *.module.ts file (app.module.ts)
+```javascript
+import * as application from 'tns-core-modules/application';
+import * as platform from 'tns-core-modules/platform';
+
+const stripeSdk = require('nativescript-stripe-sdk');
+
+application.on(application.launchEvent, () => {
+  if (platform.isIOS) {
+    stripeSdk.StripeSdk.setApiKey('yourAPIKey');
+  }
+});
+```
+### Usage in UI
+```xml
+<StripePaymentCardTextField
+  (paymentCardTextFieldDidChange)="onPaymentCardTextFieldDidChange($event)">
+</StripePaymentCardTextField>
+```
+
+### Example paymentCardTextFieldDidChange handler
+```javascript
+import { StripeSdk } from 'nativescript-stripe-sdk';
+
+...
+
+onPaymentCardTextFieldDidChange(payload) {
+  const isValid = StripeSdk.validateCard(payload.cardParams);
+
+  if (isValid) {
+    StripeSdk
+      .createToken(payload.cardParams)
+      .then(token => {
+        console.log('Created token: ', token.toString());
+      })
+      .catch((error: Error) => {
+        console.error('Create token error: ', error);
+      });
+  }
+}
+```
+## Usage in vanilla NS
 
 ### IMPORTANT: SDK API key needs to be set on app startup
 ```javascript
@@ -80,6 +124,14 @@ git clone git@github.com:piotrilski/nativescript-stripe-sdk.git
 cd src/
 npm run setup
 npm run demo.ios
+```
+
+## Running angular demo
+```
+git clone git@github.com:piotrilski/nativescript-stripe-sdk.git
+cd src/
+npm run setup
+npm run demo.angular.ios
 ```
 
 ## License
