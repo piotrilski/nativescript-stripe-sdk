@@ -2,7 +2,7 @@
   loaded="pageLoaded" class="page"
   xmlns:ui="nativescript-stripe-sdk">
   <StackLayout class="p-20">
-    <Label text="CC control"
+    <Label text="predefined values, no callback"
       class="t-20 text-center footnote" textWrap="true"/>
     <!-- predefined/binded values -->
     <ui:StripePaymentCardTextField
@@ -11,9 +11,21 @@
       number="4242424242424242"
       cvc="232"/>
 
+    <Label text="with callback"
+      class="t-20 text-center footnote" textWrap="true"/>
     <ui:StripePaymentCardTextField
       class="m-10"
       paymentCardTextFieldDidChange="{{ callbackFn }}"/>
 
+    <Label text="{{ 'Is card valid: ' + cardValid }}" class="t-20 text-center footnote"/>
+
+    <StackLayout visibility="{{ tokenProcessing ? 'visible' : 'collapsed' }}">
+      <Label text="Creating stripe token..."
+        class="t-20 text-center"/>
+      <ActivityIndicator busy="true" />
+    </StackLayout>
+    <Label text="{{ 'Token: ' + token }}"
+      visibility="{{ !tokenProcessing && token ? 'visible' : 'collapsed' }}"
+      class="t-20 text-center footnote"/>
   </StackLayout>
 </Page>

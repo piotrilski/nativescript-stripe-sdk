@@ -1,40 +1,87 @@
-# Your Plugin Name
+# NativeScript Stripe-SDK
+> This repo is based on [@Osei Fortune](https://github.com/triniwiz)'s [nativescript-stripe](https://github.com/triniwiz/nativescript-stripe). Perfect job, Sir!
 
-Add your plugin badges here. See [nativescript-urlhandler](https://github.com/hypery2k/nativescript-urlhandler) for example.
 
-Then describe what's the purpose of your plugin. 
+IMPORTANT: Highly recomend using [@Osei Fortune](https://github.com/triniwiz)'s
+[nativescript-stripe](https://github.com/triniwiz/nativescript-stripe)
 
-In case you develop UI plugin, this is where you can add some screenshots.
+The purpose of this plugin is to add some specific functionalities required by the app I work on. I have also wanted to use official [nativescript-plugin-seed](https://github.com/NativeScript/nativescript-plugin-seed)
 
-## (Optional) Prerequisites / Requirements
 
-Describe the prerequisites that the user need to have installed before using your plugin. See [nativescript-firebase plugin](https://github.com/eddyverbruggen/nativescript-plugin-firebase) for example.
+Implemented for iOS only - this plugin uses 11.3 Stripe's SDK.
+
+<img src="https://github.com/piotrilski/nativescript-stripe-sdk/blob/master/media/token_ios.gif" height="662px"/>
+
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
-
-```javascript
-tns plugin add <your-plugin-name>
+```bash
+tns plugin add nativescript-stripe-sdk
 ```
 
-## Usage 
+## Usage
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
-	
+### IMPORTANT: SDK API key needs to be set on app startup
 	```javascript
-    Usage code snippets here
+    import { StripeSdk } from 'nativescript-stripe-sdk';
+
+    application.on(application.launchEvent, () => {
+        if (platform.isIOS) {
+            StripeSdk.setApiKey('pk_test_u6EwgR7lHu8YKOqO5AOynNVj');
+        }
+    });
     ```)
+
+### Usage in UI
+
+    ```xml
+    <!-- predefined/binded values -->
+    <ui:StripePaymentCardTextField
+      expDate="{{ date }}"
+      number="{{ number }}"
+      cvc="{{ cvc }}"/>
+
+    <!-- callback -->
+     <ui:StripePaymentCardTextField
+      paymentCardTextFieldDidChange="{{ callbackFn }}"/>
+    ```
+
+### Check if given CC is valid (card of STPCardParams type)
+    ```javascript
+    import { StripeSdk } from 'nativescript-stripe-sdk';
+
+    const isValid = StripeSdk.validateCard(card);
+    ```
+
+### Generate stripe token
+IMPORTANT: valid stripe API key needs to be set on app startup
+
+     ```javascript
+    import { StripeSdk } from 'nativescript-stripe-sdk';
+
+    StripeSdk
+        .createToken(card.cardParams)
+        .then(token => { console.log(token); })
+        .catch(error => { console.error(error); });
+    ```
 
 ## API
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
-    
+In XML:
 | Property | Default | Description |
 | --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
-    
+| expDate | not set | CC expiration date - typeof Date |
+| number | not set | CC number - typeof string |
+| cvc | not set | CC expiration date - typeof string |
+
+## Running the demo app
+```
+git clone git@github.com:piotrilski/nativescript-stripe-sdk.git
+cd src/
+npm run setup
+npm run demo.ios
+```
+
 ## License
 
 Apache License Version 2.0, January 2004
