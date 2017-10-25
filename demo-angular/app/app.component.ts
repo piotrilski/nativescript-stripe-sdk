@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
         .fromPromise(StripeSdk.createToken(payload.cardParams))
         .map(token => token.toString())
         .catch(error => error.message)
-        .subscribe(tokenMessage => {
+        .subscribe((tokenMessage: string) => {
           this.token.next(tokenMessage);
         });
     }

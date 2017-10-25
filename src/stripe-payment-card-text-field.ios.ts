@@ -4,26 +4,6 @@ import {
   cardExpDateProperty,
   cardNumberProperty,
 } from './stripe-payment-card-text-field.common';
-import { StripePaymentEventData } from './stripe-payment-event-data';
-
-import { EventData } from "tns-core-modules/data/observable";
-
-// class TapHandler extends NSObject {
-//   public paymentCardTextFieldDidChange(nativeButton: STPPaymentCardTextField, nativeEvent: _UIEvent) {
-//     const owner: StripePaymentCardTextField = (<any>nativeButton).owner;
-//     if (owner) {
-//       owner.notify({
-//         eventName: StripePaymentCardTextFieldBase.paymentCardTextFieldDidChange,
-//         object: owner,
-//       });
-//     }
-//   }
-//   public static ObjCExposedMethods = {
-//       "paymentCardTextFieldDidChange": { returns: interop.types.void, params: [interop.types.id, interop.types.id] }
-//   };
-// }
-
-// const handler = TapHandler.new();
 
 export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   private localDelegate: StripePaymentCardTextFieldDelegate;

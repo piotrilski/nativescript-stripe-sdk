@@ -1,11 +1,15 @@
 import { ios } from "tns-core-modules/utils/utils";
+import {
+  StripeCardParams,
+  StripeToken,
+} from "./stripe-models.ios";
 
 export class StripeSdk {
   static setApiKey(key): void {
     STPPaymentConfiguration.sharedConfiguration().publishableKey = key;
   }
 
-  static createToken(card: STPCardParams): Promise<STPToken> {
+  static createToken(card: StripeCardParams): Promise<StripeToken> {
     const apiClient = ios.getter(
       STPAPIClient,
       STPAPIClient.sharedClient,
@@ -25,7 +29,7 @@ export class StripeSdk {
     });
   }
 
-  static validateCard(card: STPCardParams): boolean {
+  static validateCard(card: StripeCardParams): boolean {
     return STPCardValidator
       .validationStateForCard(card) === STPCardValidationState.Valid;
   }
