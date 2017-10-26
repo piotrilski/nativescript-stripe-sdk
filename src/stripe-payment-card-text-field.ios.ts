@@ -3,6 +3,9 @@ import {
   cardCvcProperty,
   cardExpDateProperty,
   cardNumberProperty,
+  cardCvcPlaceholder,
+  cardExpirationPlaceholder,
+  cardNumberPlaceholder,
 } from './stripe-payment-card-text-field.common';
 
 export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
@@ -75,6 +78,10 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
     super.disposeNativeView();
   }
 
+  /**
+   * Sets credit card number
+   * @param value CC number as string
+   */
   [cardNumberProperty.setNative](value: string) {
     const map = new Map<string, string>();
 
@@ -84,6 +91,10 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
       .overrideSTPCardParams(this.nativeView.cardParams, map);
   }
 
+  /**
+   * Sets CVC
+   * @param value CVC string
+   */
   [cardCvcProperty.setNative](value: string) {
     const map = new Map<string, string>();
 
@@ -107,6 +118,30 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
 
     this.nativeView.cardParams = this
       .overrideSTPCardParams(this.nativeView.cardParams, map);
+  }
+
+  /**
+   * Sets CC's number placeholder
+   * @param value number placeholder
+   */
+  [cardNumberPlaceholder.setNative](value: string) {
+    this.nativeView.numberPlaceholder = value;
+  }
+
+  /**
+   * Sets CC's CVC placeholder
+   * @param value CVC placeholder
+   */
+  [cardCvcPlaceholder.setNative](value: string) {
+    this.nativeView.cvcPlaceholder = value;
+  }
+
+  /**
+   * Sets CC's expiration placeholder
+   * @param value expiration placeholder
+   */
+  [cardExpirationPlaceholder.setNative](value: string) {
+    this.nativeView.expirationPlaceholder = value;
   }
 }
 

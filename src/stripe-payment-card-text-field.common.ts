@@ -69,6 +69,18 @@ export const cardCvcProperty =
 export const cardExpDateProperty =
   new Property<StripePaymentCardTextFieldBase, string>({ name: 'expDate' });
 
+export const cardNumberPlaceholder =
+  new Property<StripePaymentCardTextFieldBase, string>({ name: 'cardNumberPlaceholder' });
+
+export const cardCvcPlaceholder =
+  new Property<StripePaymentCardTextFieldBase, string>({ name: 'cardCvcPlaceholder' });
+
+export const cardExpirationPlaceholder =
+  new Property<StripePaymentCardTextFieldBase, string>({ name: 'cardExpirationPlaceholder' });
+
 cardNumberProperty.register(StripePaymentCardTextFieldBase);
 cardCvcProperty.register(StripePaymentCardTextFieldBase);
 cardExpDateProperty.register(StripePaymentCardTextFieldBase);
+cardNumberPlaceholder.register(StripePaymentCardTextFieldBase);
+cardCvcPlaceholder.register(StripePaymentCardTextFieldBase);
+cardExpirationPlaceholder.register(StripePaymentCardTextFieldBase);

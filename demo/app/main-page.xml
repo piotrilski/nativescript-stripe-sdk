@@ -1,6 +1,8 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
-  loaded="pageLoaded" class="page"
-  xmlns:ui="nativescript-stripe-sdk">
+<Page
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:ui="nativescript-stripe-sdk"
+  class="page"
+  loaded="pageLoaded">
   <StackLayout class="p-20">
     <Label text="predefined values, no callback"
       class="t-20 text-center footnote" textWrap="true"/>
@@ -15,6 +17,9 @@
       class="t-20 text-center footnote" textWrap="true"/>
     <ui:StripePaymentCardTextField
       class="m-10"
+      cardNumberPlaceholder="Card number"
+      cardCvcPlaceholder="CVC"
+      cardExpirationPlaceholder="MM/YY"
       paymentCardTextFieldDidChange="{{ callbackFn }}"/>
 
     <Label text="{{ 'Is card valid: ' + cardValid }}" class="t-20 text-center footnote"/>

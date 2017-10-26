@@ -2,6 +2,9 @@
   <StackLayout row="0">
     <StripePaymentCardTextField
       class="m-10"
+      [cardNumberPlaceholder]="'Card number'"
+      [cardCvcPlaceholder]="'CVC'"
+      [cardExpirationPlaceholder]="'MM/YY'"
       (paymentCardTextFieldDidChange)="onPaymentCardTextFieldDidChange($event)">
     </StripePaymentCardTextField>
   </StackLayout>
