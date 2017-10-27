@@ -43,7 +43,10 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
     eventName: string,
     ccTextField: STPPaymentCardTextField,
   ) {
-   this.makeNotification(eventName, ccTextField);
+   this.makeNotification({
+     eventName,
+     cardParams: ccTextField.cardParams,
+    });
   }
 
   /**

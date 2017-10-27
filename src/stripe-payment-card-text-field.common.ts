@@ -1,6 +1,8 @@
 import { View, Property } from "tns-core-modules/ui/core/view";
 import { EventData } from "tns-core-modules/data/observable";
+
 import { StripePaymentEventData } from './stripe-payment-event-data';
+import { StripeCardParams } from "./stripe-models";
 
 export class StripePaymentCardTextFieldBase extends View {
   /**
@@ -12,12 +14,22 @@ export class StripePaymentCardTextFieldBase extends View {
   static paymentCardTextFieldDidEndEditingExpirationEvent: string = 'paymentCardTextFieldDidEndEditingExpiration';
   static paymentCardTextFieldDidEndEditingNumberEvent: string = 'paymentCardTextFieldDidEndEditingNumber';
 
-  static STPCardParamsProperties: string[] = ['number', 'cvc', 'expYear', 'expMonth'];
+  static STPCardParamsProperties: string[] = [
+    'number',
+    'cvc',
+    'expYear',
+    'expMonth',
+  ];
 
-  makeNotification(
+  makeNotification(payload: {
     eventName: string,
-    ccTextField: STPPaymentCardTextField,
-  ) {
+    cardParams: StripeCardParams,
+  }) {
+    const {
+      eventName,
+      cardParams
+    } = payload;
+
     switch (eventName) {
       /**
        * Lets not distinguish the type for the time being.
@@ -27,10 +39,10 @@ export class StripePaymentCardTextFieldBase extends View {
       case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingExpirationEvent:
       case StripePaymentCardTextFieldBase.paymentCardTextFieldDidEndEditingNumberEvent:
       case StripePaymentCardTextFieldBase.paymentCardTextFieldDidChangeEvent: {
-        this.notify(<StripePaymentEventData>{
+        super.notify(<StripePaymentEventData>{
           eventName,
           object: this,
-          cardParams: ccTextField.cardParams,
+          cardParams,
         });
       } break;
 

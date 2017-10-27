@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { registerElement } from "nativescript-angular/element-registry";
+import { registerElement, isKnownView } from "nativescript-angular/element-registry";
 
 import { DIRECTIVES } from "./nativescript-stripe-sdk.directives";
 
@@ -9,4 +9,6 @@ import { DIRECTIVES } from "./nativescript-stripe-sdk.directives";
 })
 export class NativeScriptStripeSdkModule { }
 
-registerElement("StripePaymentCardTextField", () => require("../").StripePaymentCardTextField);
+if (!isKnownView('StripePaymentCardTextField')) {
+    registerElement("StripePaymentCardTextField", () => require("../").StripePaymentCardTextField);
+}
