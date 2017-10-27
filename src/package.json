@@ -1,6 +1,6 @@
 {
   "name": "nativescript-stripe-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "NativeScript implementation of Stripe's iOS SDK - 11.3.0",
   "main": "stripe",
   "typings": "index.d.ts",

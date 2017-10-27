@@ -114,6 +114,10 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
    * @param value date
    */
   [cardExpDateProperty.setNative](value: Date) {
+    if (!value) {
+      return;
+    }
+
     const map = new Map<string, number>();
 
     map.set('expYear', value.getFullYear());
