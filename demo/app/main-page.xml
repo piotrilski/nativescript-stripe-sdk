@@ -8,6 +8,7 @@
       class="t-20 text-center footnote" textWrap="true"/>
     <!-- predefined/binded values -->
     <ui:StripePaymentCardTextField
+      id="card-predefined"
       class="m-10"
       expDate="{{ date }}"
       number="4242424242424242"
@@ -16,6 +17,7 @@
     <Label text="with callback"
       class="t-20 text-center footnote" textWrap="true"/>
     <ui:StripePaymentCardTextField
+      id="card"
       class="m-10"
       cardNumberPlaceholder="Card number"
       cardCvcPlaceholder="CVC"

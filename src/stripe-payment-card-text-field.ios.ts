@@ -82,7 +82,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   }
 
   /**
-   * Sets credit card number
+   * Set credit card number
    * @param value CC number as string
    */
   [cardNumberProperty.setNative](value: string) {
@@ -95,7 +95,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   }
 
   /**
-   * Sets CVC
+   * Set CVC
    * @param value CVC string
    */
   [cardCvcProperty.setNative](value: string) {
@@ -128,7 +128,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   }
 
   /**
-   * Sets CC's number placeholder
+   * Set CC's number placeholder
    * @param value number placeholder
    */
   [cardNumberPlaceholder.setNative](value: string) {
@@ -136,7 +136,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   }
 
   /**
-   * Sets CC's CVC placeholder
+   * Set CC's CVC placeholder
    * @param value CVC placeholder
    */
   [cardCvcPlaceholder.setNative](value: string) {
@@ -144,7 +144,7 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   }
 
   /**
-   * Sets CC's expiration placeholder
+   * Set CC's expiration placeholder
    * @param value expiration placeholder
    */
   [cardExpirationPlaceholder.setNative](value: string) {

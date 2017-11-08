@@ -5,10 +5,18 @@ import {
 } from "./stripe-models.ios";
 
 export class StripeSdk {
-  static setApiKey(key): void {
+  /**
+   * Set the API key
+   * @param key API key
+   */
+  static setApiKey(key: string): void {
     STPPaymentConfiguration.sharedConfiguration().publishableKey = key;
   }
 
+  /**
+   * Create Stripe Token
+   * @param card StripeCardParams CC object
+   */
   static createToken(card: StripeCardParams): Promise<StripeToken> {
     const apiClient = ios.getter(
       STPAPIClient,

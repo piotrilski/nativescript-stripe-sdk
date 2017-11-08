@@ -12,7 +12,7 @@ export class HelloWorldModel extends Observable {
     super();
 
     this.set('cardValid', false);
-    this.set('date', new Date(2018, 9, 1));
+    this.set('date', new Date(2018, 11, 1));
   }
 
   callbackFn(card: any) {

@@ -1,13 +1,13 @@
 {
   "name": "nativescript-stripe-sdk",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "NativeScript implementation of Stripe's iOS SDK - 11.3.0",
   "main": "stripe",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "3.2.0",
-      "ios": "3.2.0"
+      "android": "3.3.0",
+      "ios": "3.3.0"
     }
   },
   "scripts": {
@@ -20,7 +20,7 @@
     "plugin.link": "npm link && cd ../demo && npm link nativescript-stripe-sdk && cd ../src",
     "plugin.tscwatch": "npm run tsc -- -w",
     "demo.ios": "npm i && npm run tsc && cd ../demo && tns debug ios --syncAllFiles",
-    "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
+    "demo.android": "npm i && npm run tsc && cd ../demo && tns debug android --syncAllFiles",
     "demo.reset": "cd ../demo && rimraf platforms",
     "demo.angular.ios": "npm i && npm run tsc && cd ../demo-angular && tns debug ios --syncAllFiles",
     "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-stripe-sdk && tns plugin add ../src",

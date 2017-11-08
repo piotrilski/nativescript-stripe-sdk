@@ -29,7 +29,6 @@ export class StripePaymentCardTextFieldBase extends View {
       eventName,
       cardParams
     } = payload;
-
     switch (eventName) {
       /**
        * Lets not distinguish the type for the time being.
