@@ -16,9 +16,7 @@ import { routes } from './app.routing';
 const stripeSdk = require('nativescript-stripe-sdk');
 
 application.on(application.launchEvent, () => {
-  if (platform.isIOS) {
-    stripeSdk.StripeSdk.setApiKey('yourApiKey');
-  }
+  stripeSdk.StripeSdk.setApiKey('yourApiKey');
 });
 
 @NgModule({

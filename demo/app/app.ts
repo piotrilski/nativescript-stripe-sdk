@@ -5,9 +5,7 @@ import * as platform from 'tns-core-modules/platform';
 import { StripeSdk } from 'nativescript-stripe-sdk';
 
 application.on(application.launchEvent, () => {
-  if (platform.isIOS) {
-    StripeSdk.setApiKey('yourApiKey');
-  }
+  StripeSdk.setApiKey('yourApiKey');
 });
 
 application.start({ moduleName: "main-page" });

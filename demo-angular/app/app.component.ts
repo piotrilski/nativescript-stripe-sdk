@@ -12,6 +12,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
+import { isAndroid } from 'tns-core-modules/platform';
+
 @Component({
     selector: 'ns-app',
     templateUrl: 'app.component.html',
@@ -34,7 +36,9 @@ export class AppComponent implements OnInit {
     if (isValid) {
       Observable
         .fromPromise(StripeSdk.createToken(payload.cardParams))
-        .map(token => token.toString())
+        .map((token: any) => isAndroid ?
+          token.getId().toString() :
+          token.toString())
         .catch(error => error.message)
         .subscribe((tokenMessage: string) => {
           this.token.next(tokenMessage);

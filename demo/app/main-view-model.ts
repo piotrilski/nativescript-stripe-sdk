@@ -1,6 +1,8 @@
 import { Observable } from 'tns-core-modules/data/observable';
 import { StripeSdk } from 'nativescript-stripe-sdk';
 
+import {isAndroid} from 'tns-core-modules/platform';
+
 export class HelloWorldModel extends Observable {
   date: Date;
   cardValid: boolean;
@@ -26,9 +28,11 @@ export class HelloWorldModel extends Observable {
 
       StripeSdk
         .createToken(card.cardParams)
-        .then(token => {
+        .then((token: any) => {
           this.set('tokenProcessing', false);
-          this.set('token', token.toString());
+          this.set('token', isAndroid ?
+            token.getId().toString() :
+            token.toString());
         })
         .catch((error: Error) => {
           this.set('tokenProcessing', false);
