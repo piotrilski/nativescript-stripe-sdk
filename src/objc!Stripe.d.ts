@@ -232,7 +232,7 @@ declare class STPAPIClient extends NSObject {
 		prototype: STPBackendAPIAdapter;
 	};
 
-	declare class STPBankAccount extends STPBankAccountParams implements STPAPIResponseDecodable {
+	declare class STPBankAccount extends NSObject implements STPAPIResponseDecodable, STPSourceProtocol {
 
 		static alloc(): STPBankAccount; // inherited from NSObject
 
@@ -242,13 +242,23 @@ declare class STPAPIClient extends NSObject {
 
 		static requiredFields(): NSArray<any>;
 
+		readonly accountHolderName: string;
+
+		readonly accountHolderType: STPBankAccountHolderType;
+
 		readonly bankAccountId: string;
 
 		readonly bankName: string;
 
+		readonly country: string;
+
+		readonly currency: string;
+
 		readonly fingerprint: string;
 
 		readonly last4: string;
+
+		readonly routingNumber: string;
 
 		readonly status: STPBankAccountStatus;
 
@@ -261,6 +271,8 @@ declare class STPAPIClient extends NSObject {
 		readonly hash: number; // inherited from NSObjectProtocol
 
 		readonly isProxy: boolean; // inherited from NSObjectProtocol
+
+		readonly stripeID: string; // inherited from STPSourceProtocol
 
 		readonly superclass: typeof NSObject; // inherited from NSObjectProtocol
 
@@ -365,7 +377,9 @@ declare class STPAPIClient extends NSObject {
 
 		Verified = 2,
 
-		Errored = 3
+		VerificationFailed = 3,
+
+		Errored = 4
 	}
 
 	declare const enum STPBillingAddressFields {
@@ -377,7 +391,7 @@ declare class STPAPIClient extends NSObject {
 		Full = 2
 	}
 
-	declare class STPCard extends STPCardParams implements STPAPIResponseDecodable, STPPaymentMethod, STPSourceProtocol {
+	declare class STPCard extends NSObject implements STPAPIResponseDecodable, STPPaymentMethod, STPSourceProtocol {
 
 		static alloc(): STPCard; // inherited from NSObject
 
@@ -393,19 +407,41 @@ declare class STPAPIClient extends NSObject {
 
 		static stringFromBrand(brand: STPCardBrand): string;
 
+		readonly address: STPAddress;
+
+		readonly addressCity: string;
+
+		readonly addressCountry: string;
+
+		readonly addressLine1: string;
+
+		readonly addressLine2: string;
+
+		readonly addressState: string;
+
+		readonly addressZip: string;
+
 		readonly brand: STPCardBrand;
 
 		readonly cardId: string;
 
 		readonly country: string;
 
+		readonly currency: string;
+
 		readonly dynamicLast4: string;
+
+		readonly expMonth: number;
+
+		readonly expYear: number;
 
 		readonly funding: STPCardFundingType;
 
 		readonly isApplePayCard: boolean;
 
 		readonly last4: string;
+
+		readonly name: string;
 
 		readonly allResponseFields: NSDictionary<any, any>; // inherited from STPAPIResponseDecodable
 
@@ -520,8 +556,6 @@ declare class STPAPIClient extends NSObject {
 
 		expYear: number;
 
-		readonly last4: string;
-
 		name: string;
 
 		number: string;
@@ -549,6 +583,8 @@ declare class STPAPIClient extends NSObject {
 		isKindOfClass(aClass: typeof NSObject): boolean;
 
 		isMemberOfClass(aClass: typeof NSObject): boolean;
+
+		last4(): string;
 
 		performSelector(aSelector: string): any;
 
@@ -596,13 +632,9 @@ declare class STPAPIClient extends NSObject {
 
 		static validationStateForCard(card: STPCardParams): STPCardValidationState;
 
-		static validationStateForCardInCurrentYearCurrentMonth(card: STPCardParams, currentYear: number, currentMonth: number): STPCardValidationState;
-
 		static validationStateForExpirationMonth(expirationMonth: string): STPCardValidationState;
 
 		static validationStateForExpirationYearInMonth(expirationYear: string, expirationMonth: string): STPCardValidationState;
-
-		static validationStateForExpirationYearInMonthInCurrentYearCurrentMonth(expirationYear: string, expirationMonth: string, currentYear: number, currentMonth: number): STPCardValidationState;
 
 		static validationStateForNumberValidatingCardBrand(cardNumber: string, validatingCardBrand: boolean): STPCardValidationState;
 	}
@@ -1646,6 +1678,8 @@ declare class STPAPIClient extends NSObject {
 
 		static new(): STPSourceParams; // inherited from NSObject
 
+		static p24ParamsWithAmountCurrencyEmailNameReturnURL(amount: number, currency: string, email: string, name: string, returnURL: string): STPSourceParams;
+
 		static propertyNamesToFormFieldNamesMapping(): NSDictionary<any, any>;
 
 		static rootObjectName(): string;
@@ -1937,7 +1971,9 @@ declare class STPAPIClient extends NSObject {
 
 		Alipay = 8,
 
-		Unknown = 9
+		P24 = 9,
+
+		Unknown = 10
 	}
 
 	declare const enum STPSourceUsage {
