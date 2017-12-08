@@ -7,6 +7,10 @@
 src/*.d.ts
 !src/index.d.ts
 !src/references.d.ts
+!src/objc!Stripe.d.ts
+!src/stripe-models.d.ts
+!src/stripe-payment-card-text-field.d.ts
+!src/stripe-sdk.d.ts
 !src/scripts/*.js
 !seed-tests/*.js
 seed-tests/seed-copy/**/*.*
