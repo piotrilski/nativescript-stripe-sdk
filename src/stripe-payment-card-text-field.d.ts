@@ -1,1 +1,6 @@
-export class StripePaymentCardTextField {}
+export class StripePaymentCardTextField {
+  nativeView: any;
+
+  createNativeView(): void;
+  initNativeView(): void;
+}

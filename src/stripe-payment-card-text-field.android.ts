@@ -90,6 +90,10 @@ export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
     super.initNativeView();
   }
 
+  disposeNativeView(): void {
+    this.cardInputListener = null;
+  }
+
   /**
    * Set credit card number
    * @param value CC number as string
