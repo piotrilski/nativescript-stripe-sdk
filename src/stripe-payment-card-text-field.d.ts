@@ -1,6 +1,10 @@
-export class StripePaymentCardTextField {
+import {
+  StripePaymentCardTextFieldBase,
+} from './stripe-payment-card-text-field.common';
+
+export class StripePaymentCardTextField extends StripePaymentCardTextFieldBase {
   nativeView: any;
 
-  createNativeView(): void;
   initNativeView(): void;
+  disposeNativeView(): void;
 }
