@@ -1,6 +1,6 @@
 {
   "name": "nativescript-stripe-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "NativeScript implementation of Stripe's iOS SDK - 11.3.0",
   "main": "stripe",
   "typings": "index.d.ts",
@@ -23,6 +23,7 @@
     "demo.android": "npm i && npm run tsc && cd ../demo && tns debug android --syncAllFiles",
     "demo.reset": "cd ../demo && rimraf platforms",
     "demo.angular.ios": "npm i && npm run tsc && cd ../demo-angular && tns debug ios --syncAllFiles",
+    "demo.angular.android": "npm i && npm run tsc && cd ../demo-angular && tns debug android --syncAllFiles",
     "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-stripe-sdk && tns plugin add ../src",
     "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**'"
@@ -44,16 +45,16 @@
   "homepage": "https://github.com/piotrilski/nativescript-stripe-sdk",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@angular/common": "5.0.5",
-    "@angular/core": "5.0.5",
-    "nativescript-angular": "5.0.0",
+    "@angular/common": "7.2.2",
+    "@angular/core": "7.2.2",
+    "nativescript-angular": "7.2.2",
     "prompt": "^1.0.0",
     "rimraf": "^2.5.0",
-    "rxjs": "^5.5.2",
-    "tns-core-modules": "^3.4.0",
-    "tns-platform-declarations": "^3.4.0",
-    "tslint": "^5.0.0",
-    "typescript": "~2.4.2"
+    "rxjs": "^6.3.3",
+    "tns-core-modules": "^5.2.2",
+    "tns-platform-declarations": "^5.2.2",
+    "tslint": "^5.8.0",
+    "typescript": "3.1.1"
   },
   "dependencies": {},
   "bootstrapper": "nativescript-plugin-seed"

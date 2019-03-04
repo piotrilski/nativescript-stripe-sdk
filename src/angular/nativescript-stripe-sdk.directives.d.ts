@@ -1,3 +1,3 @@
 export declare class StripePaymentCardTextFieldDirective {
 }
-export declare const DIRECTIVES: typeof StripePaymentCardTextFieldDirective[];
+export declare const DIRECTIVES: (typeof StripePaymentCardTextFieldDirective)[];
