@@ -1,1 +1,1 @@
-pod 'Stripe', '11.3.0'
+pod 'Stripe', '13.2'
