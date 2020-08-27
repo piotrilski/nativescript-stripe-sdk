@@ -1,2 +1,2 @@
 platform :ios, '10.0'
-pod 'Stripe', '19.0.1'
+pod 'Stripe', '14.0.1'
